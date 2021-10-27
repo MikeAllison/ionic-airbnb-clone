@@ -4,13 +4,18 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/places/discover',
+    redirectTo: 'places/discover',
     pathMatch: 'full',
   },
   {
     path: 'auth',
     loadChildren: () =>
       import('./auth/auth.module').then((m) => m.AuthPageModule),
+  },
+  {
+    path: 'bookings',
+    loadChildren: () =>
+      import('./bookings/bookings.module').then((m) => m.BookingsPageModule),
   },
   {
     path: 'places',
@@ -24,9 +29,8 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'bookings',
-    loadChildren: () =>
-      import('./bookings/bookings.module').then((m) => m.BookingsPageModule),
+    path: '**',
+    redirectTo: '/places/discover',
   },
 ];
 
