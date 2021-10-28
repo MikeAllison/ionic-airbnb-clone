@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'places/discover',
+    redirectTo: '/places/discover',
     pathMatch: 'full',
   },
   {
@@ -19,18 +19,12 @@ const routes: Routes = [
   },
   {
     path: 'places',
-    redirectTo: '/places/discover',
-  },
-  {
-    path: 'places/discover',
     loadChildren: () =>
-      import('./places/discover/discover.module').then(
-        (m) => m.DiscoverPageModule
-      ),
+      import('./places/places.module').then((m) => m.PlacesPageModule),
   },
   {
     path: '**',
-    redirectTo: '/places/discover',
+    redirectTo: '/places',
   },
 ];
 
